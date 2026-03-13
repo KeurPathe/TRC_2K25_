@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/style-commun.css" />
+  <link rel="stylesheet" href="../styles/style-code.css" />
+  <title>Résilience Urbaine - B2MS CleanTech</title>
+</head>
+<body>
+  <header class="header">
+    <div class="section__container header__container_domaine">
+      <h2>Résilience Urbaine</h2>
+    </div>
+  </header>
+
+  <div class="layout-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <nav class="main-nav">
+        <a href=".././" class="nav-link"><i class="fas fa-home"></i> Accueil</a>
+        <a href="./it" class="nav-link"><i class="fas fa-desktop"></i> IT</a>
+        <a href="./electronique" class="nav-link"><i class="fas fa-microchip"></i> Électronique</a>
+        <a href="./mecanique" class="nav-link"><i class="fas fa-cogs"></i> Mécanique</a>
+        <a href="./convoyeur" class="nav-link"></i><i class="fas fa-forward"></i> Convoyeur</a>
+
+        <div class="nav-section">
+          <a href="./trc25" style="text-decoration: none;"><button class="tab-button active"><i class="fas fa-robot"></i> TRC25</button> </a>       
+          <div class="sub-links">
+            <a class="subtab-button active" href="./trc25-convoyeur">Convoyeur 2.0</a>
+              <nav class="project-subnav active" id="subnav-convoyeur">
+              <a href="#1-conv">1. Vers convoyeur 2.0</a>
+              <a href="#2-conv">2. Améliorations mécaniques</a>
+              <a href="#3-conv">3. Améliorations électroniques</a>
+              <a href="#4-conv">4. Programmation</a>
+              <a href="#5-conv">5. Tests fonctionnels</a>
+            </nav>
+            <a class="subtab-button" href="./trc25-ia">Détection des déchets</a>
+            <a class="subtab-button" href="./trc25-meca">Système de ramassage</a>
+          </div>
+        </div>
+
+      </nav>
+    </div>
+
+    <!-- Contenu principal -->
+    <main class="main-content">
+      <section class="tab-content active">
+        <div class="subtab-content active">
+          <h2 id="convoyeur" class="projet-titre">Convoyeur 2.0</h2>
+            
+          <h3 id="1-vers_conv2">1. Vers convoyeur 2.0</h3>
+            <p>
+              Lors de la phase de présélection de la TRC 2025, une première version du convoyeur destiné au tri et au transport des déchets a été conçue et testée. 
+              Bien que fonctionnelle, cette version initiale présentait plusieurs limites, tant sur le plan mécanique qu’électronique.
+              <br>
+              La conception du Convoyeur 2.0 vise à corriger ces limites en se concentrant sur deux axes principaux :
+                <ul>
+                  <li><strong>Améliorations mécaniques:</strong> remplacement du bois par des pièces imprimées en 3D, structure démontable en quatre parties, système d'ajustement de tension du tapis optimisé et supports de capteurs repensés.</li>
+                  <li><strong>Améliorations électroniques:</strong> meilleure intégration des capteurs, câblage optimisé, support moteur stabilisé et fiabilisation générale du fonctionnement.</li>
+                </ul>
+            </p>
+            <p>
+              L’objectif du Convoyeur 2.0 est d’offrir une structure plus solide, modulable, 
+              facilement réparable et mieux adaptée à l’intégration dans le système de tri intelligent pour la TRC 2025.
+            </p>
+
+          <h3 id="2-conv">2. Améliorations mécaniques</h3>
+            <p>
+              Le Convoyeur 2.0 intègre plusieurs améliorations mécaniques visant à rendre le système <strong>plus robuste</strong>, 
+              <strong>modulable</strong> et <strong>facile à entretenir</strong>, tout <strong>en conservant les éléments fonctionnels essentiels</strong> de la version précédente (roulements, tambours, moteur, ...).
+            </p>
+
+            <h4>a. Structure démontable</h4>
+              <p>
+                La structure initiale en bois a été remplacée par des pièces imprimées en 3D. 
+                Le convoyeur est désormais entièrement démontable, découpé en quatre parties principales, ce qui facilite le transport, l’assemblage et la maintenance.
+              </p>
+              <div class="image-container">
+                <img src="../images/TRC25/Convoyeur/conv1.png" alt="bord" class="image-small"/>
+                <img src="../images/TRC25/Convoyeur/conv2.png" alt="bord" class="image-small"/>
+                <img src="../images/TRC25/Convoyeur/conv3.png" alt="bord" class="image-small"/>
+                <img src="../images/TRC25/Convoyeur/conv4.png" alt="bord" class="image-small"/>
+                <img src="../images/TRC25/Convoyeur/conv5.png" alt="bord" class="image-small"/>
+                <img src="../images/TRC25/Convoyeur/conv6.png" alt="bord" class="image-small"/>
+              </div>
+
+              <h4>b. Système d’ajustement de la tension du tapis</h4>
+                <p>
+                  Un nouveau mécanisme permet de régler précisément la tension du tapis. 
+                  Ce système est composé de deux <strong>vis filetées</strong> et de <strong>trois écrous</strong> montés autour d’un support central accueillant le tambour arrière. 
+                  En vissant ou dévissant, les écrous se déplacent axialement, entraînant le support et ajustant la tension du tapis pour éviter tout glissement.
+                </p>
+                <div class="image-container">
+                  <img src="../images/TRC25/Convoyeur/conv9.png" alt="vis" class="image-small"/>
+                  <img src="../images/TRC25/Convoyeur/conv10.png" alt="ecrou" class="image-small"/>
+                  <img src="../images/TRC25/Convoyeur/conv11.png" alt="support du tambour" class="image-small"/>
+                  <img src="../images/TRC25/Convoyeur/conv12.png" alt="système d’ajustement de la tension" class="image-small"/>
+                </div>
+
+              <h4>c. Supports</h4>
+                <ul>
+                  <li>
+                    <strong>Support du capteur de fin de convoyage:</strong> 
+                    intégré et conçu pour maintenir le capteur en position stable et fiable à la sortie du convoyeur.
+                    <div class="image-container">
+                      <img src="../images/TRC25/Convoyeur/conv13.png" alt="support du capteur infrarouge" class="image-small"/>
+                    </div>
+                  </li>
+                  <li>
+                    <strong>Support du capteur ultrason:</strong> 
+                    conçu pour maintenir le capteur en position stable et précise afin de détecter la présence des déchets sur le convoyeur.
+                    <div class="image-container">
+                      <img src="../images/TRC25/Convoyeur/conv14.png" alt="support du capteur ultrason" class="image-small"/>
+                    </div>
+                  </li>
+                  
+                  <li>
+                    <strong>Supports de l'alimentation:</strong> 
+                    pour fixer et sécuriser le système d’alimentation.
+                    <div class="image-container">
+                      <img src="../images/TRC25/Convoyeur/conv16.png" alt="support de l'alimentation" class="image-small"/>
+                    </div>
+                  </li>
+                  <li>
+                    <strong>Supports du pupitre:</strong> 
+                    pour les boutons de contrôle et la LED de signalisation.
+                    <div class="image-container">
+                      <img src="../images/TRC25/Convoyeur/conv17.png" alt="support du pupitre de commande" class="image-small"/>
+                    </div>
+                  </li>
+                  <li>
+                    <strong>Supports du tapis:</strong> 
+                    pour soutenir et maintenir le tapis en place.
+                    <div class="image-container">
+                      <img src="../images/TRC25/Convoyeur/conv15.png" alt="support du tapis" class="image-small"/>
+                    </div>
+                  </li>
+                </ul>
+                
+              <h4>d. Assemblage sous SolidWorks</h4>
+                <p>
+                  Toutes les pièces ont été modélisées sur SolidWorks, puis assemblées sous SolidWorks.
+                </p>
+                <div class="image-container">
+                  <img src="../images/TRC25/Convoyeur/conv18.png" alt="convoyeur sous solidworks" class="image-mean"/>
+                  <img src="../images/TRC25/Convoyeur/conv19.png" alt="convoyeur sous solidworks" class="image-mean"/>
+                </div>
+
+              <h4>e. Impression et assemblage</h4>
+                <p>
+                  Après modélisation sur SolidWorks et validation des pièces par l’équipe mécanique, 
+                  toutes les pièces ont été imprimées en 3D puis assemblées pour constituer le convoyeur.
+                </p>
+                <div class="image-container">
+                  <img src="../images/TRC25/Convoyeur/conv20.png" alt="pièces imprimées" class="image-mean"/>
+                  <img src="../images/TRC25/Convoyeur/conv21.jpg" alt="assemblage" class="image-mean"/>
+                  <img src="../images/TRC25/Convoyeur/conv22.jpg" alt="assemblage" class="image-mean"/>
+                </div>
+
+          <h3 id="2-conv">2. Améliorations électroniques</h3>
+            <p>
+              Le Convoyeur 2.0 intègre plusieurs améliorations électroniques pour renforcer la fiabilité, la flexibilité et la connectivité du système.
+            </p>
+
+            <h4>a. Alimentation</h4>
+              <p>
+                Le Convoyeur 2.0 conserve l’alimentation par batterie de la version précédente, garantissant ainsi la portabilité du système 
+                et son fonctionnement même en l’absence d’une source secteur. 
+                Cette configuration permet de déplacer facilement le convoyeur et de l’utiliser dans différents environnements sans dépendre d’une prise électrique.
+                <br>
+                Pour accroître la flexibilité et permettre un fonctionnement prolongé, un système d’alimentation par prise secteur a été ajouté. 
+                Cette option fournit une source d’énergie alternative et continue, réduisant la dépendance aux batteries 
+                et assurant une disponibilité permanente lors de tests prolongés ou d’une utilisation intensive.
+              </p>
+              <div class="image-container">
+                <img src="../images/TRC25/Convoyeur/conv23.png" alt="alimentation" class="image-mean"/>
+              </div>
+
+              <h4>b. Communication et connectivité</h4>
+                <ul>
+                  <li>
+                    <strong>Communication I2C:</strong>
+                     une interface I2C a été ajoutée pour permettre une liaison rapide et fiable entre le <strong>convoyeur</strong> et le <strong>DOFBOT</strong>. 
+                     Cette communication facilite l’échange de données et le contrôle des différents modules du système, tout en simplifiant le câblage et l’intégration.
+                  </li>
+                  <li>
+                    <strong>Module Wi-Fi ESP01:</strong>
+                    le module Wi-Fi ESP01 a été intégré afin de transmettre les données du convoyeur en temps réel. 
+                    Il permet la supervision à distance du fonctionnement, le suivi des capteurs et le contrôle du convoyeur. 
+                    Cette connectivité améliore la flexibilité du système et facilite le diagnostic et la maintenance.
+                  </li>
+                </ul>
+                <p>
+                  Pour assurer la compatibilité des deux communications, un <strong>régulateur de tension 5V à 3,3V</strong> a été utilisé afin d'alimenter correctement les modules nécessitant une tension plus faible.
+                  Un <strong>convertisseur de niveau logique</strong> a également été intégré pour adapter les signaux entre le microcontrôleur et les périphériques, garantissant ainsi une communication fiable et sécurisée pour l'I²C et le module Wi-Fi ESP01.
+                </p>
+                <div class="image-container">
+                  <img src="../images/TRC25/Convoyeur/conv24.png" alt="circuit communication" class="image-mean"/>
+                </div>
+
+              <h4>c. Commandes</h4>
+                <ul>
+                  <li>
+                    <strong>Boutons de contrôle:</strong>
+                    es deux boutons poussoirs ont été remplacés par un interrupteur à bascule, offrant un contrôle plus pratique et robuste du convoyeur.
+                  </li>
+                  <li>
+                    <strong>Reset du convoyeur</strong>
+                    un bouton de réinitialisation a été ajouté pour permettre de redémarrer rapidement le microcontrôleur en cas de besoin, facilitant la maintenance et le débogage.
+                  </li>
+                </ul>
+                <div class="image-container">
+                  <img src="../images/TRC25/Convoyeur/conv25.png" alt="commandes et interfaces" class="image-mean"/>
+                </div>
+
+              <h4>d. Câblage</h4>
+                <p>
+                  Le câblage a été réorganisé afin de faciliter la maintenance et de réduire les risques de court-circuit.
+                  Toutes les connexions sont sécurisées et facilement accessibles, garantissant ainsi un fonctionnement stable et fiable du convoyeur.
+                </p>
+                <div class="image-container">
+                  <img src="../images/TRC25/Convoyeur/conv26.png" alt="cablage du convoyeur" class="image-mean"/>
+                </div>
+
+          <h3 id="4-conv">4. Programmation</h3>
+            <ul>Le microcontrôleur du convoyeur a été programmé pour :
+              <li>
+                Lire en temps réel les capteurs(ultrason et infrarouge).
+              </li>
+              <li>
+                Contrôler le moteur.
+              </li>
+              <li>
+                Assurer la communication avec le DOFBOT via I2C/ESP01.
+              </li>
+              <li>
+                Réagir aux commandes utilisateur(interrupteur à bascule, bouton reset) et sécuriser le fonctionnement du système.
+              </li>
+            </ul>
+            <p>
+              Le code est structuré de manière modulaire, facilitant la maintenance et les futures améliorations.
+            </p>
+            <details class="code-container">
+              <summary>code_convoyeur.ino</summary>
+              <div class="btn-bar">
+                <button onclick="copierCode('code_convoyeur-ino', this)">📋</button>
+                <button onclick="telechargerCode('code_convoyeur-ino', 'code_convoyeur.ino', 'text/ino', this)">🡇</button>
+              </div>
+              <pre><code id="code_convoyeur-ino">
+    
+              </code></pre>
+            </div>
+
+          <h3 id="5-conv">5. Tests fonctionnels</h3>
+            <p>
+              Le Convoyeur 2.0 a été soumis à une série de tests pour vérifier le bon fonctionnement de l’ensemble du système.
+            </p>
+            <video controls width=auto>
+              <source src="../videos/TRC25/Convoyeur/conv.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la vidéo HTML5.
+            </video>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    Copyright © 2025 Team B2MS CleanTech. All rights reserved.
+  </footer>
+
+  <script src="../scripts/script_commun.js"></script>
+  <script src="../scripts/script_code.js"></script>
+</body>
+</html>

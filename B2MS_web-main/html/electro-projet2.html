@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/style-commun.css" />
+  <link rel="stylesheet" href="../styles/style-code.css" />
+  <title>Département Électronique</title>
+</head>
+<body>
+  <header class="header">
+    <div class="section__container header__container_domaine">
+      <h2>Département Électronique</h2>
+    </div>
+  </header>
+
+  <div class="layout-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <nav class="main-nav">
+        <a href=".././" class="nav-link"><i class="fas fa-home"></i> Accueil</a>
+
+        <div class="nav-section">
+          <a href="./it" class="nav-link"><i class="fas fa-desktop"></i> IT</a>
+          <a href="./electronique" style="text-decoration: none;"><button class="tab-button active"><i class="fas fa-microchip"></i> Électronique</button> </a>       
+          
+          <div class="sub-links">
+            <a href="./electro-projet1" class="subtab-button">Projet 1</a>
+            <a class="subtab-button active" href="./electro-projet2">Projet 2</a>
+              <nav class="project-subnav active" id="subnav-test2">
+              <a href="#1-test2">1. Introduction</a>
+              <a href="#2-test2">2. Cahier des charges</a>
+              <a href="#3-test2">3. Schéma synoptique</a>
+              <a href="#4-test2">4. Description fonctionnelle</a>
+              <a href="#5-test2">5. Etapes de validation</a>
+              <a href="#6-test2">6. Réalisation du PCB</a>
+              <a href="#7-test2">7. Prototype</a>
+            </nav>
+            <a class="subtab-button" href="./electro-projet3">Projet 3</a>
+          </div>
+        </div>
+
+        <a href="./mecanique" class="nav-link"><i class="fas fa-cogs"></i> Mécanique</a>
+        <a href="./convoyeur" class="nav-link"></i><i class="fas fa-forward"></i> Convoyeur</a>
+        <a href="./trc25" class="nav-link"><i class="fas fa-robot"></i> TRC25</a>
+      </nav>
+    </div>
+
+    <!-- Contenu principal -->
+    <main class="main-content">
+      <section id="electro-content" class="tab-content active">
+        <div id="test2" class="subtab-content active">
+          <h2 id="projet2" class="projet-titre">Projet 2 - Boîte noire</h2>
+            <h3 id="1-test2">1. Introduction</h3>
+            <p>
+              Dans les systèmes embarqués modernes, la collecte et l’analyse de données 
+              en temps réel sont essentielles pour le suivi et la sécurité des équipements, 
+              notamment dans des domaines critiques comme l’automobile, l’aviation ou le 
+              ferroviaire. S’inspirant du fonctionnement des boîtes noires utilisées dans 
+              ces industries, ce projet a pour objectif de concevoir un système embarqué 
+              capable d’enregistrer et de transmettre en temps réel des données de mouvement 
+              (vitesse et orientation) à l’aide d’un capteur inertiel. 
+              Les informations sont ensuite visualisées sur une station de contrôle via 
+              un écran LCD. Ce projet s’inscrit dans le cadre du Tekbot Robotics Challenge 
+              et fait appel à plusieurs compétences majeures : programmation directe des 
+              microcontrôleurs ATmega328P sans utiliser de carte Arduino, communication via 
+              le protocole I2C, conception de circuits imprimés avec KiCAD, réalisation 
+              d’un boîtier cubique de 7 cm, intégration matérielle sur veroboard ou PCB,
+              ainsi que la conception d’une alimentation spécifique.
+            </p>
+
+            <h3 id="2-test2">2. Cahier des charges</h3>
+              <h4>a. Objectifs fonctionnels</h4>
+                <ul>
+                  <li>Lire les données de vitesse et d’orientation à l’aide du MPU6050</li>
+                  <li>Utiliser le microcontrôleur ATmega328P sans carte Arduino</li>
+                  <li>Concevoir un circuit imprimé (PCB) et une alimentation autonome</li>
+                  <li>Transmettre les données à une station de contrôle via I2C</li>
+                  <li>Afficher les données sur un écran LCD en mode 4 bits</li>
+                </ul>
+
+              <h4>b. Contraintes techniques</h4>
+                <ul>
+                  <li>Le cube doit mesurer 7x7x7 cm, avec une face ouverte pour voir le circuit</li>
+                  <li>Le microcontrôleur du cube agit en maître I2C</li>
+                  <li>Le microcontrôleur de la station agit en esclave I2C</li>
+                  <li>Alimentation externe obligatoire, hors du cube</li>
+                  <li>Schéma et PCB réalisés avec KiCad</li>
+                </ul>
+              <h4>c. Matériels utilisés</h4>
+                <ul>
+                  <li><a href="https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf" target="_blank">ATmega328P</a> ×2</li>
+                  <li><a href="https://invensense.tdk.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf" target="_blank">MPU6050</a></li>
+                  <li><a href="https://www.gotronic.fr/pj2-sbc-lcd16x2-fr-1441.pdf?srsltid=AfmBOopmg8VyH8PQXxRcqE7GEvoyRwGRHeKVU9ZsKwGmKu13oZXhPhaJ" target="_blank">LCD 16x2</a> (mode 4 bits)</li>
+                  <li>Alimentation</li>
+                </ul>
+
+            <h3 id="3-test2">3. Schéma synoptique</h3>
+            <p>
+              Ce système embarqué est composé de deux unités :
+              une <strong>boîte noire</strong> et une <strong>station de contrôle</strong>, 
+              connectées via le bus I2C.
+              La boîte noire comprend un capteur MPU6050 qui détecte les mouvements de la main 
+              et envoie les données à un microcontrôleur ATmega328P configuré en maître. 
+              Celui-ci traite les données et les transmet à la station de contrôle, 
+              où un autre ATmega328P, configuré en esclave, les reçoit. 
+              Les informations sont ensuite affichées sur un écran LCD.
+              Chaque unité est alimentée séparément par une source de 5V.
+            </p>
+            <div class="image-container">
+                <img src="../images/Test2/Electronique/image1.webp" alt="Prototype"/>
+            </div>
+
+            <h3 id="4-test2">4. Description fonctionnelle des différents blocs du système</h3>
+              <h4>a. Bloc d’alimentation</h4>
+                <ul>
+                  <li><strong>Fonction principale</strong></li>
+                <p>
+                  Ce bloc a pour objectif de fournir une tension continue et stable de 5V nécessaire 
+                  au fonctionnement des différents composants électroniques du système, 
+                  notamment le capteur <strong>MPU6050</strong>, les <strong>microcontrôleurs ATmega328P</strong> et l'écran <strong>LCD</strong>.
+                </p>
+
+                  <li><strong>Fonctionnement</strong></li>
+                <p>
+                  On utilise trois batteries de Li-Ion 3,7V rechargeables montées en série pour obtenir environ 12V.
+                </p>
+                <p>
+                  Le <strong>régulateur L7805</strong> reçoit ce 12V en entrée (Vin) et fournit du 5V en sortie (Vout).
+                </p>
+                <p>
+                  Deux condensateurs (330nF <strong>à l’entrée</strong> et 100nF <strong>à la sortie</strong>) sont utilisés pour stabiliser la tension et filtrer les parasites:
+                </p>
+                <div class="image-container">
+                  <img src="../images/Test2/Electronique/image2.webp" alt="schema"/>
+                </div>
+                <p>
+                  La simulation sur proteus : Les condensateurs de filtrage ont été omis dans ce schéma pour simplifier la représentation, bien qu’ils soient indispensables en pratique pour assurer la stabilité et réduire le bruit.
+                </p>
+                <div class="image-container">
+                  <img src="../images/Test2/Electronique/image3.webp" alt="schema"/>           
+                </div>
+
+                <video controls width=30%>
+                  <source src="../videos/Test2/Electronique/test.mp4" type="video/mp4">
+                  Votre navigateur ne supporte pas la vidéo HTML5.                   
+                </video>
+
+                </ul>
+              
+              <h4>b. Bloc d’entrée(dans la boite noire)</h4>
+              <p>
+                Nous avons choisi le capteur MPU6050 parce qu’il intègre un accéléromètre et un 
+                gyroscope dans un seul composant. Cela permet de mesurer les mouvements et les rotations 
+                de la main avec précision. Il est facile à utiliser grâce au protocole I2C, et il fonctionne 
+                bien avec le microcontrôleur ATmega328P. En plus, il est peu coûteux et largement utilisé 
+                dans les projets embarqués. D’autres capteurs peuvent faire un travail similaire, comme le 
+                MPU9250 (qui ajoute un magnétomètre), le LSM6DS3 (plus récent et plus économe), ou le ADXL34
+              </p>
+              <div class="image-container">
+                  <img src="../images/Test2/Electronique/image4.webp" alt="schema"/>
+              </div>
+
+              <h4>c. Bloc de commande(dans la boite noire)</h4>
+                <ul>
+                  <li><strong>Étape 1 : Prise en main du microcontrôleur ATmega328P</strong></li>
+                <p>
+                  Avant de démarrer le système complet, l’équipe s’est d’abord focalisée sur le 
+                  microcontrôleur ATmega328P. L’objectif était de comprendre pleinement sa structure 
+                  interne, ses broches, ainsi que la manière de le configurer et de le simuler.
+                </p>
+                <p>
+                  Nous avons étudié ses principales caractéristiques et son brochage :
+                </p>
+                <ul>
+                  <li>Le format DIP à 28 broches, comme dans les cartes Arduino Uno</li>
+                  <li>Les broches d’E/S numériques D0 à D13, pour piloter des LED, relais, etc.</li>
+                  <li>Les entrées analogiques A0 à A5, pour la lecture de capteurs</li>
+                  <li>L’interface I2C via SDA (PC4) et SCL (PC5)</li>
+                  <li>La communication série UART via TX (PD1) et RX (PD0)</li>
+                  <li>Les broches d’alimentation : VCC, GND, AVCC, AREF</li>
+                  <li>La broche RESET, généralement tirée à l’état haut via une résistance</li>
+                  <li>Les broches XTAL1/XTAL2 pour le quartz (utilisé plus tard)</li>
+                </ul>
+                <p>
+                  Ces éléments nous ont permis de préparer une simulation fiable sous Proteus 
+                  pour la suite du projet.
+                </p>
+                <div class="image-container">
+                  <img src="../images/Test2/Electronique/image5.webp" alt="schema"/>
+                </div>
+
+                  <li><strong>Étape 2 : Simulation basique de l’ATmega328P dans Proteus</strong></li>
+                <p>
+                  Après avoir étudié la configuration du microcontrôleur, nous avons réalisé une première 
+                  simulation simple sous Proteus, afin de valider son fonctionnement dans un environnement 
+                  simulé.
+                </p>
+                <p>
+                  À ce stade :
+                </p>
+                <ul>
+                  <li>Nous n'avons pas utilisé les connexions d’alimentation (VCC/AVCC) ni de quartz externe, car elles ne sont pas obligatoires pour les logiques simples dans Proteus.</li>
+                  <li>Nous nous sommes concentrés sur le comportement des broches dans un exemple réel.</li>
+                </ul>
+                <p>
+                  Scénario de simulation : Nous avons conçu un système simple dans lequel :
+                </p>
+                <ul>
+                  <li>Un bouton poussoir est connecté à une entrée numérique.</li>
+                  <li>
+                    Nous nous sommes concentrés sur le comportement des broches dans un exemple réel. 
+                    Lorsqu’on appuie sur le bouton, l’ATmega active un relais via une sortie numérique.
+                  </li>
+                  <li>Ce relais commande une lampe LED 12V, simulant une charge réelle.</li>
+                </ul>
+                <p>
+                  Le code Arduino correspondant a été compilé dans l’IDE Arduino, puis le fichier .hex 
+                  généré a été intégré dans Proteus pour tester le comportement du circuit.
+                </p>     
+                <video controls width=60%>
+                <source src="../videos/Test2/Electronique/video1.mp4" type="video/mp4">
+                  Votre navigateur ne supporte pas la vidéo HTML5.
+                </video>
+
+                <p>
+                  Observation :
+                </p>
+                <ul>
+                  <li>Lorsque le bouton est pressé, le relais s’active et allume la LED.</li>
+                  <li>Le comportement observé est conforme à la logique attendue et cohérente.</li>
+                </ul>
+              </ul>
+
+                <h4>d. Bloc d’affichage de la station du controle</h4>
+                <p>
+                  Pour l’affichage des données au niveau de la station de contrôle, nous avons opté pour 
+                  un écran LCD équipé d’un module I2C. Ce choix permet de simplifier le montage électronique 
+                  en réduisant considérablement le nombre de connexions nécessaires entre le microcontrôleur 
+                  et l’écran. Grâce à cette interface, seules deux lignes (SDA et SCL) suffisent pour 
+                  transmettre les informations, ce qui laisse davantage de broches disponibles pour d’autres 
+                  composants. L’écran LCD I2C assure ainsi une lecture claire et en temps réel des données 
+                  de vitesse et d’orientation envoyées par la boîte noire.
+                </p>
+                <div class="image-container">
+                  <img src="../images/Test2/Electronique/image6.webp" alt="schema"/>
+                </div>
+                
+              <h4>e. La communication I2C</h4>
+                <p>
+                  Ce document constitue une présentation détaillée et approfondie du protocole I2C 
+                  (Inter-Integrated Circuit), qui est un standard de communication série synchrone très 
+                  répandu dans l’électronique embarquée. Ce protocole facilite l’échange d’informations 
+                  entre un ou plusieurs maîtres et plusieurs périphériques esclaves en utilisant seulement 
+                  deux fils, simplifiant ainsi les connexions matérielles tout en assurant une communication 
+                  fiable et efficace.
+                </p>
+
+                <ul>
+                  <li><strong>Principe de fonctionnement</strong></li>
+                <p>
+                  <a href="https://fr.wikipedia.org/wiki/I2C" target="_blank">Protocole I2C</a> (Inter-Integrated Circuit), développé par Philips (aujourd’hui NXP) dans les années 1980, 
+                  est un standard mondial pour la communication série entre circuits intégrés, 
+                  surtout dans les systèmes embarqués. Il utilise un bus bidirectionnel à deux fils : 
+                  SDA pour les données et SCL pour l’horloge, permettant à plusieurs périphériques de 
+                  partager le même canal tout en gérant précisément l’accès.
+                  Contrairement à des protocoles comme SPI, I2C minimise le nombre de connexions 
+                  nécessaires, ce qui simplifie le routage sur circuit imprimé et réduit les coûts. 
+                  Ce protocole est largement utilisé dans des domaines variés : 
+                  automobile, domotique, informatique, etc.
+                </p>
+                <p>
+                  L'I2C fonctionne selon un modèle <a href="https://www.ionos.fr/digitalguide/serveur/know-how/le-principe-master/slave/" target="_blank">maître-esclave</a>: un ou plusieurs maîtres contrôlent la communication, et les esclaves répondent aux requêtes. 
+                  Chaque communication commence par une condition <strong>Start</strong>, 
+                  suivie de <strong>l’adresse de l’esclave</strong> et d’un bit de direction 
+                  (lecture/écriture). Les données sont ensuite échangées octet par octet, 
+                  chaque octet étant confirmé par un bit d’acquittement(ACK). 
+                  La communication se termine par une condition <strong>Stop</strong>, qui libère le bus.
+                </p>
+                <p>
+                  Techniquement, I2C utilise des lignes ouvertes (open-drain) : 
+                  les dispositifs ne peuvent que tirer les lignes vers le bas, 
+                  tandis que des résistances pull-up maintiennent le niveau haut par défaut. 
+                  Cela évite les conflits, notamment en mode multi-maîtres.
+                  Enfin, I2C offre une grande flexibilité en termes de vitesse, du mode standard 
+                  (100 kHz) au mode rapide (jusqu’à 3,4 MHz) et au-delà dans certaines variantes 
+                  propriétaires.
+                </p>
+                
+                <div class="image-container">
+                  <img src="../images/Test2/Electronique/image7.webp" alt="schema"/>
+                </div>
+
+                <li><strong>Prise de contrôle du bus</strong></li>
+                <p>
+                  La prise de contrôle du bus par un maître débute par une condition Start (S), 
+                  qui est un événement distinctif sur le bus. Cette condition correspond à une transition 
+                  sur la ligne SDA de l’état haut à l’état bas, alors que la ligne SCL est maintenue à 
+                  l’état haut. Cette séquence particulière est détectée par tous les périphériques 
+                  connectés au bus, qui entrent alors en mode écoute, prêts à recevoir des données.
+                </p>
+                <p>
+                  La condition Start joue un rôle fondamental : elle marque l’exclusivité du maître sur 
+                  le bus, ce qui évite les collisions ou l’interférence avec d’autres maîtres éventuels. 
+                  Elle sert aussi de synchronisation initiale à la transmission de données, 
+                  en assurant que tous les appareils sont synchronisés sur le début de la communication.
+                </p>
+                <p>
+                  Les résistances pull-up sur les lignes SDA et SCL maintiennent ces lignes à 
+                  un état logique haut par défaut, garantissant ainsi que le bus est en repos 
+                  quand aucune communication n’a lieu.
+                </p>
+
+                <div class="image-container">
+                  <img src="../images/Test2/Electronique/image8.webp" alt="schema" class="image-mean"/>
+                </div>
+                <div class="image-container">
+                  <img src="../images/Test2/Electronique/image9.webp" alt="schema" class="image-mean"/>
+                </div>
+
+                <li><strong>Transmission d'un octet</strong></li>
+                <p>
+                  La transmission des données sur le bus I2C s’effectue par octets (8 bits). 
+                  Chaque bit est transmis séquentiellement, en commençant par le bit le plus significatif 
+                  (MSB).
+                </p>
+                <p>
+                  Le protocole impose que chaque bit soit placé sur la ligne SDA pendant que la ligne SCL 
+                  est à l’état bas. Ensuite, la ligne SCL passe à l’état haut, moment où 
+                  le récepteur lit la valeur présente sur la ligne SDA. 
+                  Lorsque la ligne SCL redescend à l’état bas, 
+                  l’émetteur peut placer le bit suivant sur SDA, et ainsi de suite.
+                </p>
+                <p>
+                  Après l’envoi des 8 bits d’un octet, 
+                  la ligne SDA est libérée pendant le 9e cycle d’horloge. 
+                  C’est alors au récepteur de signaler par un bit d’acquittement (ACK) s’il a correctement 
+                  reçu l’octet, en tirant la ligne SDA à l’état bas. S’il ne tire pas SDA à zéro, 
+                  un bit de non-acquittement (NACK) est détecté, ce qui indique que la communication 
+                  doit être interrompue ou qu’une erreur s’est produite.
+                </p>
+                <p>
+                  Ce mécanisme d’<strong>ACK/NACK</strong> est crucial car il assure la fiabilité 
+                  des transmissions, permettant au maître de savoir si l’esclave est disponible 
+                  et prêt à recevoir ou envoyer des données.
+                </p>
+
+                <li><strong>Transmission d'une adresse</strong></li>
+                <p>
+                  Après la condition Start, le maître envoie un octet d’adresse pour 
+                  identifier l’esclave avec lequel il souhaite communiquer. 
+                  L’adresse est généralement codée sur 7 bits, suivis d’un bit R/W indiquant 
+                  si la transaction sera une lecture ou une écriture.
+                </p>
+                <p>
+                  Le protocole prévoit aussi une extension 10 bits 
+                  pour les réseaux comportant un grand nombre de périphériques, 
+                  mais cette extension est moins fréquemment utilisée.
+                </p>
+                <p>
+                  Tous les périphériques esclaves surveillent le bus 
+                  et comparent l’adresse reçue avec leur propre adresse. 
+                  Celui qui reconnaît son adresse répond alors par un bit ACK en tirant la ligne SDA 
+                  à l’état bas pendant le 9e bit. Les autres esclaves restent silencieux 
+                  jusqu’à la prochaine séquence.
+                </p>
+                <p>
+                  Cette étape est essentielle car elle garantit que seules les communications 
+                  destinées à un périphérique spécifique sont traitées, 
+                  évitant ainsi toute interférence entre plusieurs périphériques sur le même bus.
+                </p>
+                <div class="image-container">
+                  <img src="../images/Test2/Electronique/image10.webp" alt="schema" class="image-mean"/>
+                </div>
+
+                <li><strong>Écriture d'une donnée</strong></li>
+                <p>
+                  Une fois l’adresse reconnue par l’esclave, 
+                  la phase de transfert des données peut commencer. 
+                  Le maître transmet alors les octets de données à l’esclave, 
+                  chaque octet étant suivi d’un bit ACK envoyé par l’esclave pour confirmer la bonne réception.  
+                </p>
+                <p>
+                  Le protocole permet d’envoyer autant d’octets que nécessaire dans une même communication, ce qui permet des transferts efficaces et continus.
+                </p>
+                <p>
+                  Pour terminer la communication, le maître génère une condition Stop (P), qui correspond à une transition de la ligne SDA de l’état bas à l’état haut alors que la ligne SCL est haute. Cette séquence indique à tous les périphériques que la transmission est terminée et que le bus est libéré pour une autre communication.
+                </p>
+                <p>
+                  Il existe également une condition Restart, qui est une condition Start générée sans condition Stop préalable, permettant de chaîner plusieurs opérations sur le même bus sans interruption.
+                </p>
+
+                <div class="image-container">
+                  <img src="../images/Test2/Electronique/image11.webp" alt="schema" class="image-mean"/>
+                </div>
+                <div class="image-container">
+                  <img src="../images/Test2/Electronique/image12.webp" alt="schema" class="image-mean"/>
+                </div>
+
+                <li><strong>Arbitration</strong></li>
+                <p>
+                  Le protocole I2C est conçu pour supporter un mode multi-maîtres, où plusieurs maîtres peuvent tenter d’accéder au bus simultanément. Pour éviter les conflits, un mécanisme d’arbitrage est mis en place.
+                </p>
+                <p>
+                  Lorsqu’un maître commence à transmettre, il surveille la ligne SDA et la compare avec ce qu’il souhaite envoyer. Si un maître détecte que la ligne SDA est forcée à l’état bas par un autre maître alors qu’il tente de la maintenir haute, il comprend qu’il a perdu l’arbitrage et abandonne immédiatement la transmission, laissant le bus libre au maître dominant.
+                </p>
+                <p>
+                  Ce mécanisme garantit qu’aucune collision électrique ne se produit sur le bus et que seule une source transmet à un instant donné. C’est une des forces du protocole I2C, qui permet une coexistence harmonieuse de plusieurs maîtres sur un même bus.
+                </p>
+
+                <div class="image-container">
+                  <img src="../images/Test2/Electronique/image13.webp" alt="schema" class="image-mean"/>
+                </div>
+
+                <li><strong>Clock Stretching</strong></li>
+                <p>
+                  Le clock stretching est une fonctionnalité du protocole I2C qui permet à un esclave de ralentir temporairement la communication lorsqu’il n’est pas prêt à envoyer ou recevoir des données. Cela se fait en gardant la ligne SCL à l’état bas (LOW), empêchant ainsi le maître de continuer à envoyer des impulsions d’horloge. Une fois que l’esclave est prêt, il libère la ligne SCL, permettant au maître de reprendre la transmission. Cette technique est utile, par exemple, lorsque le capteur a besoin de plus de temps pour traiter ou préparer les données. Le maître doit respecter cet étirement d’horloge pour éviter des erreurs de communication.
+                </p>
+                
+                <div class="image-container">
+                  <img src="../images/Test2/Electronique/image14.webp" alt="schema" class="image-mean"/>
+                </div>
+
+                </ul>
+
+            <h4>f. Communication I2C entre MPU6050 et ATmega328P</h4>
+                <p>
+                  Dans notre projet, le microcontrôleur ATmega328P communique avec le capteur MPU6050 à l’aide du protocole I2C. Ce protocole permet de transmettre les données d’accélération et de rotation via deux fils (SDA et SCL). Le MPU6050 agit comme esclave, et l’ATmega328P comme maître.
+                </p>
+                <ul>
+                  <li><strong>Fonctionnement de la liaison I2C</strong></li>
+                <p>
+                  La connexion matérielle entre le MPU6050 et l’ATmega328P s’effectue via le protocole I2C (Inter-Integrated Circuit), qui utilise deux lignes de communication :
+                </p>
+                <ul>
+                  <li>SDA (Serial Data Line) : ligne bidirectionnelle pour l’échange des données, connectée à la broche PC4 de l’ATmega328P.</li>
+                  <li>SCL (Serial Clock Line) : ligne d’horloge générée par le maître, connectée à la broche PC5 de l’ATmega328P.</li>
+                </ul>
+                <p>
+                  Sur le bus I2C, le dispositif qui initie la communication est appelé maître, tandis que celui qui répond s’appelle esclave. Dans notre cas :
+                  L’ATmega328P joue le rôle de maître, c’est lui qui contrôle le bus, génère l’horloge, et initie les échanges.
+                  Le MPU6050 est l’esclave, il attend que le maître lui demande des données spécifiques.
+                  Le maître démarre la communication en envoyant une adresse unique correspondant à l’esclave (ici l’adresse I2C du MPU6050, généralement 0x68), suivie d’une commande indiquant quel registre ou donnée il souhaite lire.
+                  </p>
+                <div class="image-container">
+                  <img src="../images/Test2/Electronique/image15.webp" alt="schema" class="image-mean"/>
+                </div>
+
+
+                  <li><strong>Envoi des commandes et réception des données</strong></li>
+                <p>
+                  La communication suit ce processus 
+                </p>
+                <ul>
+                  <li>Le maître (ATmega328P) commence par envoyer une commande au MPU6050, qui consiste à spécifier l’adresse du registre interne dont il souhaite lire la valeur. Par exemple, pour lire l’accélération sur l’axe X, il envoie l’adresse du registre ACCEL_XOUT_H.</li>
+                  <li>Cette commande est envoyée via le bus I2C sous forme d’une trame contenant l’adresse de l’esclave, suivie de l’adresse du registre ciblé.</li>
+                  <li>Une fois la commande reçue, le MPU6050 prépare la donnée correspondante et la transmet dès que le maître la demande.</li>
+                  <li>Le maître récupère alors la ou les valeurs envoyées par le capteur, généralement sur plusieurs octets, qu’il traite ensuite pour en extraire l’information de mouvement (accélération, rotation, température).</li>
+                </ul>
+                
+              </ul>
+
+          <h3 id="5-test2">5. Etapes de validation avant PCB</h3>
+              <h4>a. Étape 1 : Communication I2C entre deux Arduino (Test de base)</h4>
+                <p>
+                  Afin de valider le fonctionnement de la communication I2C entre deux microcontrôleurs en utilisant un exemple simple : un bouton poussoir et une LED.
+                </p>
+                <p>
+                  Composants utilisés :
+                </p>
+                <ul>
+                  <li>2 cartes Arduino UNO</li>
+                  <li>1 bouton poussoir (sur le maître)</li>
+                  <li>1 LED (sur l’esclave)</li>
+                  <li>Câblage SDA/SCL entre les deux cartes</li>
+                </ul>
+
+                <p>
+                  Fonctionnement  :
+                </p>
+                <ul>
+                  <li>L’Arduino maître lit l’état d’un bouton poussoir connecté en entrée.</li>
+                  <li>Cet état (appuyé ou relâché) est transmis à l’Arduino esclave via le protocole I2C.</li>
+                  <li>L’esclave reçoit cette donnée et contrôle une LED : elle s’allume si le bouton est appuyé, s’éteint sinon.</li>
+                </ul>
+
+                <p>
+                  But de l'étape : 
+                </p>
+                <ul>
+                  <li>Apprendre à configurer le bus I2C (maître/esclave).</li>
+                  <li>Vérifier la synchronisation et la fiabilité de la communication.</li>
+                  <li>Observer une réponse simple à un signal I2C.</li>
+                </ul>
+
+                <div class="image-container">
+                  <img src="../images/Test2/Electronique/image16.webp" alt="schema"/>
+                </div>
+
+                <video controls width=30%>
+                  <source src="../videos/Test2/Electronique/video2.mp4" type="video/mp4">
+                  Votre navigateur ne supporte pas la vidéo HTML5.
+                </video>
+            
+            <h4>b. Étape 2 : Remplacement par des modules réels (MPU6050 et LCD)</h4>
+                <p>
+                  Pour simuler une application plus réaliste en utilisant des capteurs réels(MPU6050) et un afficheur(lCD), tout en gardant la communication I2C entre deux cartes.
+                </p>
+                <p>
+                  Composants utilisés :
+                </p>
+                <ul>
+                  <li>MPU6050 (capteur accéléromètre/gyroscope) sur le maître</li>
+                  <li>Écran LCD (type I2C 16x2) sur l’esclave</li>
+                  <li>Deux cartes Arduino</li>
+                </ul>
+
+                <p>
+                  Fonctionnement  :
+                </p>
+                <ul>
+                  <li>Le capteur MPU6050 collecte les données d’accélération et de rotation.</li>
+                  <li>Ces données sont lues par l’Arduino maître via I2C.</li>
+                  <li>Le maître envoie ensuite les valeurs traitées à l’esclave.</li>
+                  <li>L’Arduino esclave reçoit les données et les affiche sur le LCD.</li>
+                </ul>
+
+                <p>
+                  But de l'étape : 
+                </p>
+                <ul>
+                  <li>Remplacer des composants de test par des modules intelligents.</li>
+                  <li>Manipuler un capteur complexe avec acquisition de données.</li>
+                  <li>Gérer l'affichage distant d'informations, toujours via I2C.</li>
+                  <li>Approfondir le protocole I2C dans un cas concret (multi-esclaves potentiels, synchronisation).</li>
+                </ul>
+
+                <div class="image-container">
+                  <img src="../images/Test2/Electronique/image17.webp" alt="schema"/>
+                </div>
+
+                <video controls width=60%>
+                  <source src="../videos/Test2/Electronique/video3.mp4" type="video/mp4">
+                  Votre navigateur ne supporte pas la vidéo HTML5.
+                </video>
+
+            <h4>c. Étape 3 : Intégration avec ATmega328P (préparation au PCB)</h4>
+                <p>
+                Afin de remplacer la carte Arduino par le <strong>microcontrôleur brut</strong> (ATmega328P), et de simuler les conditions réelles d’un circuit imprimé.
+                </p>
+                <p>
+                  Composants utilisés :
+                </p>
+                <ul>
+                  <li>2× ATmega328P</li>
+                  <li>2× Quartz</li>
+                  <li>4× Condensateurs 22 pF</li>
+                  <li>1× MPU6050</li>
+                  <li>1× Écran LCD 16x2 avec interface I2C</li>
+                  <li>2× Boutons poussoirs</li>
+                  <li>2× Résistances 10 kΩ</li>
+                  <li>Fils de connexion (Dupont)</li>
+                  <li>Breadboard</li>
+                </ul>
+
+                <p>
+                  Fonctionnement  :
+                </p>
+                <ul>
+                  <li>L’ATmega328P est programmé avec le même code que celui utilisé sur une carte Arduino, à l’aide d’un programmateur externe (comme USBasp ou Arduino as ISP).</li>
+                  <li>Les deux ATmega328P communiquent via le protocole I2C :</li>
+                  <ul>
+                    <li>L’un joue le rôle de maître (elle collecte les données du MPU6050).</li>
+                    <li>L’autre joue le rôle d’esclave (elle affiche les données sur un écran LCD I2C).</li>
+                  </ul>
+                  <li>Les microcontrôleurs sont utilisés en mode "standalone" (hors carte de développement).</li>
+                  <li>Connectés sur breadboard avec :</li>
+                  <ul>
+                    <li>Un quartz et deux condensateurs 22 pF pour chaque ATMEGA328P pour générer l’horloge.</li>
+                    <li>Une alimentation 5V stable.</li>
+                    <li>Un bouton poussoir relié à la broche RESET de chaque ATmega.</li>
+                    <li>Une résistance de 10 kΩ connectée entre la broche RESET et VCC, pour garantir un redémarrage stable.</li>
+                  </ul>
+                </ul>
+                
+                <p>
+                  But de l'étape : 
+                </p>
+                <ul>
+                  <li>S’assurer que le microcontrôleur fonctionne correctement en mode autonome.</li>
+                  <li>Tester la communication I2C dans les conditions matérielles réelles du futur PCB.</li>
+                  <li>Préparer l’intégration finale des composants sur un PCB personnalisé.</li>
+                </ul>
+
+                <div class="image-container">
+                  <img src="../images/Test2/Electronique/image16.webp" alt="schema" class="image-small"/>              
+                </div>
+
+                <video controls width=30%>
+                  <source src="../videos/Test2/Electronique/video4.mp4" type="video/mp4">
+                  Votre navigateur ne supporte pas la vidéo HTML5.
+                </video>
+
+
+              <div class="code-container">
+                <p>Code_maitre.ino </p>
+                <div class="btn-bar">
+                  <button onclick="copierCode('Code_maitre-ino', this)">📋</button>
+                  <button onclick="telechargerCode('Code_maitre-ino', 'Code_maitre.ino', 'text/ino', this)">🡇</button>
+                </div>
+                <pre><code id="Code_maitre-ino">
+    #include &lt;Wire.h&gt;        
+    #include &lt;MPU6050.h&gt;  
+
+    MPU6050 mpu;
+
+    float ax, ay, az;
+    const float threshold = 0.2;
+    String direction = "";
+
+    void setup() {
+      Serial.begin(9600);
+      Wire.begin();      // Maître
+      mpu.initialize();
+
+      if (!mpu.testConnection()) {
+        Serial.println("Erreur MPU6050");
+        while (1);
+      }
+
+      Serial.println("MPU6050 OK");
+    }
+
+    void loop() {
+      int16_t rawAx, rawAy, rawAz;
+      mpu.getAcceleration(&rawAx, &rawAy, &rawAz);
+
+      ax = rawAx / 16384.0;
+      ay = rawAy / 16384.0;
+      az = rawAz / 16384.0;
+
+      // Détection de direction
+      if (ax > threshold) direction = "Gauche";
+      else if (ax < -threshold) direction = "Droite";
+      else if (ay > threshold) direction = "Arriere";
+      else if (ay < -threshold) direction = "Avant";
+      else if (az > threshold) direction = "Haut";
+      else if (az < -threshold) direction = "Bas";
+      else direction = "Stable";
+
+      // Envoi vers esclave
+      Wire.beginTransmission(8);         // adresse esclave
+      Wire.write(direction.c_str());     // envoyer la direction comme texte
+      Wire.endTransmission();
+
+      Serial.print("Direction envoyée : ");
+      Serial.println(direction);
+
+      delay(300);
+    }                      
+                  </code></pre>
+                </div>
+
+              <div class="code-container">
+                <p>Code_esclave.ino </p>
+                <div class="btn-bar">
+                  <button onclick="copierCode('Code_esclave-ino', this)">📋</button>
+                  <button onclick="telechargerCode('Code_esclave-ino', 'Code_esclave.ino', 'text/ino', this)">🡇</button>
+                </div>
+                <pre><code id="Code_esclave-ino">
+    #include &lt;Wire.h&gt;               // Bibliothèque pour communication I2C
+    #include &lt;LiquidCrystal_I2C.h&gt;  // Bibliothèque pour écran LCD I2C
+    #include &lt;MPU6050.h&gt;  
+    
+    LiquidCrystal_I2C lcd(0x27, 16, 2);  // LCD I2C
+
+    String receivedDirection = "";
+
+    void setup() {
+      Wire.begin(8);  // Adresse de l'esclave
+      Wire.onReceive(receiveData);
+
+      lcd.init();
+      lcd.backlight();
+      lcd.setCursor(0, 0);
+      lcd.print("Pret a recevoir");
+    }
+
+    void loop() {
+      // Affiche la dernière direction reçue
+      lcd.setCursor(0, 0);
+      lcd.print("Dir:            "); // Nettoyer la ligne
+      lcd.setCursor(5, 0);
+      lcd.print(receivedDirection);
+      
+      delay(200);
+    }
+
+    void receiveData(int bytes) {
+      receivedDirection = ""; // réinitialiser
+
+      while (Wire.available()) {
+        char c = Wire.read();
+        receivedDirection += c;
+      }
+
+      Serial.print("Recu : ");
+      Serial.println(receivedDirection);
+    }         
+                  </code></pre>
+                </div>
+                
+            <h4>Pourquoi cette Démarche ?</h4>
+            <p>
+              La réalisation d’un PCB nécessite des choix précis de composants et un bon fonctionnement garanti en amont. Cette démarche par étapes nous a permis de :
+            </p>
+            <ul>
+              <li>Identifier les erreurs éventuelles (bruit sur la ligne I2C, mauvais câblage, alimentation instable…).</li>
+              <li>Tester progressivement les modules dans un environnement de développement.</li>
+              <li>Réduire le risque d’erreur lors de la conception du PCB.</li>
+              <li>Avoir une base fonctionnelle avant le passage à la fabrication.</li>
+            </ul>
+          
+
+          <h3 id="6-test2">6. Réalisation du PCB</h3>
+            <h4>a. PCB de la boite noire</h4>
+            <div class="image-container">
+              <img src="../images/Test2/Electronique/image18.webp" alt="pcb" class="image-mean"/>
+              <p class = "txt_center">
+                Conception du schéma intégrant le microcontrôleur ATmega328P, le capteur MPU-6050 et les connecteurs.
+              </p>
+            </div>
+            
+            <div class="image-container">
+              <img src="../images/Test2/Electronique/image19.webp" alt="pcb" class="image-mean"/>
+              <p class = "txt_center">
+                Attribution des empreintes physiques correspondant aux composants.
+              </p>
+            </div>
+        
+            <div class="image-container">
+              <img src="../images/Test2/Electronique/image20.webp" alt="pcb" class="image-mean"/>
+              <p class = "txt_center">
+                Verificaton des erreurs (DRC)
+              </p>
+            </div>
+            
+            <div class="image-container">
+              <img src="../images/Test2/Electronique/image21.webp" alt="pcb" class="image-mean"/>
+              <p class = "txt_center">
+                Ajustement de la disposition pour optimiser l’espace et faciliter le routage.
+              </p>
+            </div>
+
+            <div class="image-container">
+              <img src="../images/Test2/Electronique/image22.webp" alt="pcb" class="image-mean"/>
+              <p class = "txt_center">
+                Routage des pistes
+              </p>
+            </div>
+            
+
+            <div class="image-container">
+              <img src="../images/Test2/Electronique/image23.webp" alt="pcb" class="image-mean"/>
+              <p class = "txt_center">
+                Définition des contours du PCB (Edge Cuts)
+              </p>
+            </div>
+
+            <div class="image-container">
+              <p class = "txt_center">
+                Visualisation 3D du PCB
+              </p>
+              <img src="../images/Test2/Electronique/image24.webp" alt="pcb" class="image-mean"/>
+            </div>
+            <video controls width=60%>
+              <source src="../videos/Test2/Electronique/video5.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la vidéo HTML5.                   
+            </video>
+
+            <p class="txt_center">
+              <a href="https://github.com/TekBot-Robotics-Challenge/2025-Team-B2MS_CleanTech-Docs/raw/refs/heads/main/Test2/Electronique/boite_noire.zip" target="_blank" class="download-link">télécharger le pcb de la boite noire</a>
+            </p>
+
+          <h4>b. PCB de la station de contrôle</h4>
+          
+              <div class="image-container">
+                <img src="../images/Test2/Electronique/image25.webp" alt="pcb" class="image-mean"/>
+                <p class = "txt_center">
+                  Conception du schéma intégrant le microcontrôleur ATmega328P, le capteur MPU-6050 et les connecteurs.
+                </p>
+              </div>
+            
+              <div class="image-container">
+                <img src="../images/Test2/Electronique/image26.webp" alt="pcb" class="image-mean"/>
+                <p class = "txt_center">
+                  Anotation
+                </p>
+              </div>
+            
+              <div class="image-container">
+              <img src="../images/Test2/Electronique/image27.webp" alt="pcb" class="image-mean"/>
+                <p class = "txt_center">
+                  Attribution des empreintes physiques correspondant aux composants.
+                </p>
+              </div>
+            
+              <div class="image-container">
+                <img src="../images/Test2/Electronique/image28.webp" alt="pcb" class="image-mean"/>
+                <p class = "txt_center">
+                Verificaton des erreurs (DRC)
+              </p>
+              </div>
+
+              <div class="image-container">
+                <img src="../images/Test2/Electronique/image29.webp" alt="pcb" class="image-mean"/>
+                <p class = "txt_center">
+                  Organisation du PCB
+                </p>
+              </div>
+              
+              <div class="image-container">
+                <img src="../images/Test2/Electronique/image30.webp" alt="pcb" class="image-mean"/>
+                <p class = "txt_center">
+                  Définition des contours du PCB (Edge Cuts)
+                </p>
+              </div>
+                
+              <div class="image-container">
+                <img src="../images/Test2/Electronique/image31.webp" alt="pcb" class="image-mean"/>
+                <p class = "txt_center">
+                  Plan de masse GND  
+                </p>
+              </div>
+            
+              <div class="image-container">
+                <img src="../images/Test2/Electronique/image32.webp" alt="pcb" class="image-mean"/>
+                <p class = "txt_center">
+                  Routage
+                </p>
+              </div>
+
+              <div class="image-container">
+                <p class = "txt_center">
+                  Visualisation 3D du PCB
+                </p>
+                <img src="../images/Test2/Electronique/image33.webp" alt="pcb" class="image-mean"/>
+              </div>
+              <video controls width=60%>
+                <source src="../videos/Test2/Electronique/video6.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo HTML5.                   
+              </video>
+            <p class="txt_center">
+              <a href="https://github.com/TekBot-Robotics-Challenge/2025-Team-B2MS_CleanTech-Docs/raw/refs/heads/main/Test2/Electronique/controle%20station.zip" target="_blank" class="download-link">téléchager le pcb de la station de contrôle</a>
+            </p>
+
+
+        <h3 id="7-test2">7. Prototype</h3>
+          <div class="image-container">
+            <img src="../images/Test2/Electronique/prototype0.webp" alt="pcb" class="image-small" />
+          </div>
+
+          <video controls width=30%>
+            <source src="../videos/Test2/Electronique/video7.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la vidéo HTML5.                   
+          </video>
+
+          <div class="image-container">
+            <img src="../images/Test2/Electronique/prototype1.webp" alt="pcb" class="image-small" />
+            <img src="../images/Test2/Electronique/prototype2.webp" alt="pcb" class="image-small" />
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    Copyright © 2025 Team B2MS CleanTech. All rights reserved.
+  </footer>
+
+  <script src="../scripts/script_commun.js"></script>
+  <script src="../scripts/script_code.js"></script>
+</body>
+</html>
